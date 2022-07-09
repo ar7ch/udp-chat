@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "chat.h"
 
-#define SERVER_PORT 8082
+#define server_port 8082
 #define BUF_SIZE 250
 #define MAX_HOSTS 10
 
@@ -40,7 +40,7 @@ void server_init() {
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_addr.s_addr = INADDR_ANY;
-    server_addr.sin_port = htons(SERVER_PORT);
+    server_addr.sin_port = htons(server_port);
     if (bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
         die("bind");
     }
@@ -49,7 +49,7 @@ void server_init() {
 void server_loop() {
 
     //
-    printf("Server is running on port %d\n", SERVER_PORT);
+    printf("Server is running on port %d\n", server_port);
     char recv_buf[BUF_SIZE] = {0};
     char output_buf[BUF_SIZE] = {0};
     char temp_buf[BUF_SIZE] = {0};
